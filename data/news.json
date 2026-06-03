@@ -1,0 +1,22 @@
+{
+  "items": [
+    {
+      "tag": "event",
+      "date": "2026-06-15",
+      "title": "Monatsübung Juni",
+      "excerpt": "Praktische Übung am Rüsthaus mit Schwerpunkt Atemschutz und technische Hilfeleistung."
+    },
+    {
+      "tag": "news",
+      "date": "2026-05-22",
+      "title": "Florianifest 2026",
+      "excerpt": "Ein herzliches Dankeschön an alle Besucherinnen und Besucher unseres diesjährigen Florianifests."
+    },
+    {
+      "tag": "mission",
+      "date": "2026-04-08",
+      "title": "Technischer Einsatz",
+      "excerpt": "Auslaufende Betriebsmittel auf Landesstraße — Einsatzdauer rund eine Stunde, keine Verletzten."
+    }
+  ]
+}
