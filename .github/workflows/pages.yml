@@ -1,0 +1,57 @@
+name: Deploy website
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    # Hourly, to pick up calendar changes
+    - cron: "17 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Validate news (data/news.json)
+        run: node .github/scripts/check-news.mjs data/news.json
+
+      - name: Fetch events from Google Calendar
+        run: node .github/scripts/build-events.mjs data/events.json
+        env:
+          ICS_URL: ${{ secrets.ICS_URL }}
+
+      - name: Assemble site
+        run: |
+          mkdir _site
+          cp -r index.html impressum.html datenschutz.html css js data assets _site/
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
