@@ -302,13 +302,20 @@
 
         <div class="events-wrap"
              data-events
-             data-endpoint="data/events.json">
+             data-endpoint="data/events.json"
+             data-fallback-url="https://calendar.google.com/calendar/embed?src=kio3k9eqnbkh15f3gh1laf804e4qug0b%40import.calendar.google.com&ctz=Europe%2FVienna">
           <ul class="events-list" id="events-list" aria-live="polite" aria-busy="true">
             <li class="event-skeleton" aria-hidden="true"><span></span><span></span></li>
             <li class="event-skeleton" aria-hidden="true"><span></span><span></span></li>
             <li class="event-skeleton" aria-hidden="true"><span></span><span></span></li>
           </ul>
         </div>
+
+        <p class="muted-note muted-note-center">
+          <a class="btn btn-ghost btn-dark" href="https://calendar.google.com/calendar/embed?src=kio3k9eqnbkh15f3gh1laf804e4qug0b%40import.calendar.google.com&ctz=Europe%2FVienna" target="_blank" rel="noopener">
+            Termine direkt im Kalender ansehen <span aria-hidden="true">→</span>
+          </a>
+        </p>
       </div>
     </section>
 
